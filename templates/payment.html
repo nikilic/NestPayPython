@@ -1,0 +1,49 @@
+<!doctype html>
+<html xmlns:margin-left="http://www.w3.org/1999/xhtml" xmlns:font-weight="http://www.w3.org/1999/xhtml">
+   <body>
+
+      <h2 style = "text-align: center;">Payment Form</h2>
+
+      <form action = "http://localhost:5000/payment" method = post>
+         <fieldset>
+            <legend>Payment Form</legend>
+            {{ form.hidden_tag() }}
+
+            <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+               {{ form.pan.label }}<br>
+               {{ form.pan }}
+               <br>
+
+               {{ form.cv2.label }} <br>{{ form.cv2 }}<br>
+               {{ form.Ecom_Payment_Card_ExpDate_Year.label }}<br>
+               {{ form.Ecom_Payment_Card_ExpDate_Year }}
+               <br>
+
+               {{ form.Ecom_Payment_Card_ExpDate_Month.label }}<br>
+               {{ form.Ecom_Payment_Card_ExpDate_Month }}
+               <br>
+
+               {{ form.cardType.label }}
+               {{ form.cardType }}
+               <br>
+               {{ form.clientid }}<br>
+               {{ form.amount }}<br>
+               {{ form.oid }}<br>
+               {{ form.okurl }}<br>
+               {{ form.failUrl }}<br>
+               {{ form.TranType }}<br>
+               {{ form.Instalment }}<br>
+               {{ form.currency }}<br>
+               {{ form.rnd }}<br>
+               {{ form.hash }}<br>
+               {{ form.storetype }}<br>
+               {{ form.hashAlgorithm }}<br>
+               {{ form.lang }}<br>
+               {{ form.submit }}
+            </div>
+
+         </fieldset>
+      </form>
+
+   </body>
+</html>
