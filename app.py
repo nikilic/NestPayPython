@@ -128,4 +128,4 @@ def confirm():
 
 if __name__ == '__main__':
     app.config['SECRET_KEY'] = 'secret'
-    app.run(port=8090)
+    app.run(port=8100)
