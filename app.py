@@ -53,6 +53,8 @@ def confirm():
     for key in request.form.keys():
         print(key + ": " + request.form[key])
 
+    print("ERROR 1")
+
     params = {}
     originalClientId = "13IN060753"
     mustParameters = ["clientid", "oid", "Response"]
@@ -67,8 +69,12 @@ def confirm():
                 isValid = False
                 return "Missing Required Param " + mustParameters[x]
 
+    print("ERROR 2")
+
     if request.form["clientid"] != originalClientId:
         return "Security Alert. Incorrect Client Id"
+
+    print("ERROR 3")
 
     paymentparams = ["AuthCode", "Response", "HostRefNum", "ProcReturnCode", "TransId", "ErrMsg"]
     for key in request.form.keys():
@@ -80,6 +86,8 @@ def confirm():
         if check == 1:
             params[key] = request.form[key]
 
+    print("ERROR 4")
+
     hashparams = request.form["HASHPARAMS"]
     hashparamsval = request.form["HASHPARAMSVAL"]
     hashparam = request.form["HASH"]
@@ -88,6 +96,8 @@ def confirm():
     index1 = 0
     index2 = 0
     escapedStoreKey = ""
+
+    print("ERROR 5")
 
     if request.form["hashAlgorithm" == "ver2"]:
         parsedHashParams = hashparams.split("|")
@@ -115,15 +125,20 @@ def confirm():
             hash = base64.b64encode(str(hashlib.sha512(hashval.encode())).encode())
     hashparamsval = hashparamsval + "|" + escapedStoreKey
 
+    print("ERROR 6")
+
     if hashval != hashparamsval or hashparam != hash:
         return "Security Alert. The digital signature is not valid. \nGenerated Hash Value: " + hashval +\
                "\nSent Hash Value: " + hashparamsval + "\nGenerated Hash: " + hash + "\nSent Hash: " + hashparam
+
+    print("ERROR 7")
 
     mdStatus = request.form["mdStatus"]
     ErrMsg = request.form["ErrMsg"]
     if mdStatus == 1 or mdStatus == 2 or mdStatus == 3 or mdStatus == 4:
         for x in range(0, 6):
             params[paymentparams[x]] = request.form(paymentparams[x])
+        print("ERROR 8")
         return render_template("success.html", params=params)
     else:
         return "3D Transaction is not Successful"
