@@ -112,7 +112,7 @@ def confirm():
 
         escapedStoreKey = storekey.replace("\\", "\\\\").replace("|", "\\|")
         hashval = paramsval + escapedStoreKey
-        hash = base64.b64encode(str(hashlib.sha512(hashval.encode())).encode())
+        hash = str(base64.b64encode(str(hashlib.sha512(hashval.encode())).encode()))
     else:
         print("OPTION 2")
         while index1 < len(hashparams):
