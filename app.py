@@ -22,7 +22,7 @@ def payment():
         orgAmount = "91.96"
         orgOkUrl = request.base_url.strip("payment") + "confirmation"
         orgFailUrl = request.base_url.strip("payment") + "confirmation"
-        orgTransactionType = "Auth"
+        orgTransactionType = "Preauth"
         orgInstallment = ""
         orgRnd = str(int(round(time.time() * 1000)))
         orgCurrency = "941"
