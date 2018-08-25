@@ -40,7 +40,7 @@ def payment():
 
         plainText = clientId+"|"+oid+"|"+amount+"|"+okUrl+"|"+failUrl+"|"+transactionType+"|"+installment+"|"+rnd+"||||"+currency+"|"+storeKey
         hashValue = hashlib.sha512(plainText.encode())
-        hash = base64.b64encode(str(hashValue).encode())
+        hash = str(base64.b64encode(str(hashValue).encode()))
 
         form = PaymentForm(clientid=orgClientId, amount=orgAmount, oid=orgOid, okurl=orgOkUrl, failUrl=orgFailUrl,
                            TranType=orgTransactionType, Instalment=orgInstallment, currency=orgCurrency, rnd=orgRnd,
@@ -112,7 +112,7 @@ def confirm():
 
         escapedStoreKey = storekey.replace("\\", "\\\\").replace("|", "\\|")
         hashval = paramsval + escapedStoreKey
-        hash = base64.b64encode(str(hashlib.sha512(hashval.encode())).encode())
+        hash = str(base64.b64encode(str(hashlib.sha512(hashval.encode())).encode()))
     else:
         print("OPTION 2")
         while index1 < len(hashparams):
