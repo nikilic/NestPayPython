@@ -99,7 +99,8 @@ def confirm():
 
     print("ERROR 5")
 
-    if request.form["hashAlgorithm" == "ver2"]:
+    if request.form["hashAlgorithm"] == "ver2":
+        print("OPTION 1")
         parsedHashParams = hashparams.split("|")
         for parsedHashParam in parsedHashParams:
             vl = request.form[parsedHashParam]
@@ -113,6 +114,7 @@ def confirm():
         hashval = paramsval + escapedStoreKey
         hash = base64.b64encode(str(hashlib.sha512(hashval.encode())).encode())
     else:
+        print("OPTION 2")
         while index1 < len(hashparams):
             index2 = hashparams.find(":", index1)
             vl = request.form[hashparams[index1, index2 - index1]]
