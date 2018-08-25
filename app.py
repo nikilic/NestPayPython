@@ -41,6 +41,7 @@ def payment():
         plainText = clientId+"|"+oid+"|"+amount+"|"+okUrl+"|"+failUrl+"|"+transactionType+"|"+installment+"|"+rnd+"||||"+currency+"|"+storeKey
         hashValue = hashlib.sha512(plainText.encode())
         hash = str(base64.b64encode(str(hashValue).encode()))
+        print(hash)
 
         form = PaymentForm(clientid=orgClientId, amount=orgAmount, oid=orgOid, okurl=orgOkUrl, failUrl=orgFailUrl,
                            TranType=orgTransactionType, Instalment=orgInstallment, currency=orgCurrency, rnd=orgRnd,
