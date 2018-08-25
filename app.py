@@ -68,7 +68,7 @@ def confirm():
         return "Security Alert. Incorrect Client Id"
 
     paymentparams = ["AuthCode", "Response", "HostRefNum", "ProcReturnCode", "TransId", "ErrMsg"]
-    for key in request.form.keys:
+    for key in request.form.keys():
         check = 1
         for x in range(0, 6):
             if key == paymentparams[x]:
