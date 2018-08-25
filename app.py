@@ -17,7 +17,7 @@ def payment():
     if request.method == 'POST':
         return "PROBA"
     elif request.method == 'GET':
-        orgClientId = "990000000000001"
+        orgClientId = "13IN060753"
         orgOid = "ORDER256712jbs\\j6b|"
         orgAmount = "91.96"
         orgOkUrl = request.base_url.strip("payment") + "confirmation"
@@ -25,7 +25,7 @@ def payment():
         orgTransactionType = "Auth"
         orgInstallment = ""
         orgRnd = str(int(round(time.time() * 1000)))
-        orgCurrency = "949"
+        orgCurrency = "941"
 
         clientId = orgClientId.replace("\\", "\\\\").replace("|", "\\|")
         oid = orgOid.replace("\\", "\\\\").replace("|", "\\|")
@@ -36,7 +36,7 @@ def payment():
         installment = orgInstallment.replace("\\", "\\\\").replace("|", "\\|")
         rnd = orgRnd.replace("\\", "\\\\").replace("|", "\\|")
         currency = orgCurrency.replace("\\", "\\\\").replace("|", "\\|")
-        storeKey = "AB123456\\|".replace("\\", "\\\\").replace("|", "\\|")
+        storeKey = "018Irvas".replace("\\", "\\\\").replace("|", "\\|")
 
         plainText = clientId+"|"+oid+"|"+amount+"|"+okUrl+"|"+failUrl+"|"+transactionType+"|"+installment+"|"+rnd+"||||"+currency+"|"+storeKey
         hashValue = hashlib.sha512(plainText.encode())
@@ -51,7 +51,7 @@ def payment():
 @app.route("/confirmation", methods = ['POST'])
 def confirm():
     params = {}
-    originalClientId = "990000000000001"
+    originalClientId = "13IN060753"
     mustParameters = ["clientid", "oid", "Response"]
     isValid = True
     for x in range(0, 3):
@@ -80,7 +80,7 @@ def confirm():
     hashparams = request.form["HASHPARAMS"]
     hashparamsval = request.form["HASHPARAMSVAL"]
     hashparam = request.form["HASH"]
-    storekey = "AB123456\\|"
+    storekey = "018Irvas"
     paramsval = ""
     index1 = 0
     index2 = 0
