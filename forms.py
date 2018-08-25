@@ -7,7 +7,7 @@ class PaymentForm(Form):
     cv2 = TextField("CCV")
     Ecom_Payment_Card_ExpDate_Year = TextField("Expiration Date Year")
     Ecom_Payment_Card_ExpDate_Month = TextField("Expiration Date Month")
-    cardType = RadioField("Choosing Visa / Master Card", choices=[(1, "Visa"), (2, "MasterCard")])
+    cardType = RadioField("Choose Visa / Master Card", choices=[(1, "Visa"), (2, "MasterCard")])
     submit = SubmitField("Complete Payment")
     clientid = HiddenField()
     amount = HiddenField()
