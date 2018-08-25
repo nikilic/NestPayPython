@@ -50,6 +50,9 @@ def payment():
 
 @app.route("/confirmation", methods = ['POST'])
 def confirm():
+    for key in request.form.keys():
+        print(key + ": " + request.form[key])
+
     params = {}
     originalClientId = "13IN060753"
     mustParameters = ["clientid", "oid", "Response"]
