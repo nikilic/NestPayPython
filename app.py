@@ -17,7 +17,7 @@ def payment():
     if request.method == 'POST':
         return "PROBA"
     elif request.method == 'GET':
-        orgClientId = "08283439281"
+        orgClientId = "13IN060753"  # 08283439281
         orgOid = "ORDER256712jbsj6b"
         orgAmount = "91.96"
         orgOkUrl = request.base_url.strip("payment") + "confirmation"
@@ -59,7 +59,7 @@ def confirm():
     print("ERROR 1")
 
     params = {}
-    originalClientId = "08283439281"
+    originalClientId = "13IN060753"
     mustParameters = ["clientid", "oid", "Response"]
     isValid = True
     for x in range(0, 3):
