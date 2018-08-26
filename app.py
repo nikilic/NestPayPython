@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello world!"
+    return "Hello world! from EnergyShop"
 
 
 @app.route("/payment", methods = ['GET', 'POST'])
@@ -17,10 +17,11 @@ def payment():
     if request.method == 'POST':
         return "PROBA"
     elif request.method == 'GET':
-        orgClientId = "13IN060753"
+        orgClientId = "08283439281"
         orgOid = "ORDER256712jbsj6b"
         orgAmount = "91.96"
         orgOkUrl = request.base_url.strip("payment") + "confirmation"
+        print( orgOkUrl)
         orgFailUrl = request.base_url.strip("payment") + "confirmation"
         orgTransactionType = "Preauth"
         orgInstallment = ""
@@ -49,15 +50,16 @@ def payment():
         return render_template("payment.html", form=form)
 
 
-@app.route("/confirmation", methods = ['POST'])
+@app.route("/confirmation", methods = ['Get', 'POST'])
 def confirm():
+    print('response from bank')
     for key in request.form.keys():
         print(key + ": " + request.form[key])
 
     print("ERROR 1")
 
     params = {}
-    originalClientId = "13IN060753"
+    originalClientId = "08283439281"
     mustParameters = ["clientid", "oid", "Response"]
     isValid = True
     for x in range(0, 3):
