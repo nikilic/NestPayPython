@@ -17,11 +17,11 @@ def payment():
     if request.method == 'POST':
         return "PROBA"
     elif request.method == 'GET':
-        orgClientId = "123456789"  # 08283439281 13IN060753
+        orgClientId = "13IN060753"  # 08283439281 13IN060753
         orgOid = "ORDER256712jbsj6b"
         orgAmount = "91.96"
         orgOkUrl = request.base_url.strip("payment") + "confirmation"
-        print( orgOkUrl)
+        print(orgOkUrl)
         orgFailUrl = request.base_url.strip("payment") + "confirmation"
         orgTransactionType = "Preauth"
         orgInstallment = ""
@@ -41,7 +41,7 @@ def payment():
 
         plainText = clientId+"|"+oid+"|"+amount+"|"+okUrl+"|"+failUrl+"|"+transactionType+"|"+installment+"|"+rnd+"||||"+currency+"|"+storeKey
         hashValue = hashlib.sha512(plainText.encode())
-        hash = str(base64.b64encode(str(hashValue).encode()))
+        hash = str(base64.b64encode(str(hashValue).encode())).encode()
         print(hash)
 
         form = PaymentForm(clientid=orgClientId, amount=orgAmount, oid=orgOid, okurl=orgOkUrl, failUrl=orgFailUrl,
@@ -59,7 +59,7 @@ def confirm():
     print("ERROR 1")
 
     params = {}
-    originalClientId = "123456789"
+    originalClientId = "13IN060753"
     mustParameters = ["clientid", "oid", "Response"]
     isValid = True
     for x in range(0, 3):
