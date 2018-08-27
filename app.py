@@ -1,10 +1,21 @@
 from flask import Flask, request, render_template
 from forms import PaymentForm
+from datetime import datetime
 import time
 import hashlib
 import base64
 
 app = Flask(__name__)
+
+
+def microtime(get_as_float=False):
+    d = datetime.now()
+    t = time.mktime(d.timetuple())
+    if get_as_float:
+        return t
+    else:
+        ms = d.microsecond / 1000000.
+        return '%f %d' % (ms, t)
 
 
 @app.route("/")
@@ -25,7 +36,7 @@ def payment():
         orgFailUrl = request.base_url.strip("payment") + "confirmation"
         orgTransactionType = "Preauth"
         orgInstallment = ""
-        orgRnd = str(int(round(time.time() * 1000)))
+        orgRnd = microtime()
         orgCurrency = "941"
 
         clientId = orgClientId.replace("\\", "\\\\").replace("|", "\\|")
@@ -50,7 +61,7 @@ def payment():
         return render_template("payment.html", form=form)
 
 
-@app.route("/confirmation", methods = ['Get', 'POST'])
+@app.route("/confirmation", methods=['Get', 'POST'])
 def confirm():
     print('response from bank')
     for key in request.form.keys():
