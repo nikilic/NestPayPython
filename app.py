@@ -29,7 +29,7 @@ def payment():
         return "PROBA"
     elif request.method == 'GET':
         orgClientId = "13IN060753"  # 08283439281 13IN060753
-        orgOid = "ORDER256712jbsj6b"
+        orgOid = "489"
         orgAmount = "91.96"
         orgOkUrl = request.base_url.strip("payment") + "confirmation"
         print(orgOkUrl)
