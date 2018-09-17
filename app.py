@@ -47,17 +47,18 @@ def payment():
         transactionType = orgTransactionType.replace("\\", "\\\\").replace("|", "\\|")
         installment = orgInstallment.replace("\\", "\\\\").replace("|", "\\|")
         rnd = orgRnd.replace("\\", "\\\\").replace("|", "\\|")
+        rnd = "N2855INH5EM5T7VYL9LA"
         currency = orgCurrency.replace("\\", "\\\\").replace("|", "\\|")
         storeKey = "018Irvas".replace("\\", "\\\\").replace("|", "\\|")
 
-        plainText = clientId+"|"+oid+"|"+amount+"|"+okUrl+"|"+failUrl+"|"+transactionType+"|"+installment+"|"+rnd+"||||"+currency+"|"+storeKey
+        plainText = clientId+"|"+oid+"|"+amount+"|"+okUrl+"|"+failUrl+"|"+transactionType+"||"+rnd+"||||"+currency+"|"+storeKey
         hashValue = hashlib.sha512(plainText.encode())
         hash = base64.b64encode(str(hashValue).encode())
         print(hash)
 
         form = PaymentForm(clientid=orgClientId, amount=orgAmount, oid=orgOid, okurl=orgOkUrl, failUrl=orgFailUrl,
                            TranType=orgTransactionType, Instalment=orgInstallment, currency=orgCurrency, rnd=orgRnd,
-                           hash=hash, storetype="3D_PAY_HOSTING", hashAlgorithm="ver2", lang="en")
+                           hash=hash, storetype="3d_pay_hosting", hashAlgorithm="ver2", lang="sr", encoding="utf-8")
         return render_template("payment.html", form=form)
 
 

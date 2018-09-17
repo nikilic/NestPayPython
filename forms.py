@@ -22,3 +22,4 @@ class PaymentForm(Form):
     storetype = HiddenField()
     hashAlgorithm = HiddenField()
     lang = HiddenField()
+    encodin = HiddenField()
