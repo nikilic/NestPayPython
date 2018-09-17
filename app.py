@@ -57,7 +57,7 @@ def payment():
         print(hash)
 
         form = PaymentForm(clientid=orgClientId, amount=orgAmount, oid=orgOid, okurl=orgOkUrl, failUrl=orgFailUrl,
-                           TranType=orgTransactionType, Instalment=orgInstallment, currency=orgCurrency, rnd=orgRnd,
+                           TranType=orgTransactionType, currency=orgCurrency, rnd=rnd,
                            hash=hash, storetype="3d_pay_hosting", hashAlgorithm="ver2", lang="sr", encoding="utf-8")
         return render_template("payment.html", form=form)
 

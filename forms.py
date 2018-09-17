@@ -15,7 +15,6 @@ class PaymentForm(Form):
     okurl = HiddenField()
     failUrl = HiddenField()
     TranType = HiddenField()
-    Instalment = HiddenField()
     currency = HiddenField()
     rnd = HiddenField()
     hash = HiddenField()
